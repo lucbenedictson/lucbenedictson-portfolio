@@ -4,394 +4,140 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Luc Benedictson</title>
-<meta name="description" content="Luc Benedictson builds iOS apps and makes music in Logic Pro. Portfolio of OnTrack, Swift Student Challenge, web projects, and co-op work.">
+<meta name="description" content="iOS developer and music producer. OnTrack, Swift Student Challenge, and other work.">
 <meta property="og:title" content="Luc Benedictson">
-<meta property="og:description" content="Luc Benedictson builds iOS apps and makes music in Logic Pro. Portfolio of OnTrack, Swift Student Challenge, web projects, and co-op work.">
+<meta property="og:description" content="iOS developer and music producer. OnTrack, Swift Student Challenge, and other work.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://lucbenedictson.github.io/">
-<meta property="og:image" content="https://lucbenedictson.github.io/img/og.png">
+<meta property="og:image" content="/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: one narrow reading column; a two-lane "session" timeline (code + music) opens the page like tracks in a DAW. */
-:root {
-  --bg: #f5f6f8;
-  --surface: #ffffff;
-  --fg: #12151a;
-  --muted: #5a6370;
-  --line: #dde1e7;
-  --code: #0066cc;        /* same blue as the resume */
-  --music: #7a5af8;
-  --code-soft: #e3effb;
-  --music-soft: #eeeafe;
-  --bezel: #12151a;
-  --todo: #b45309;
-  --todo-soft: #fdf3e7;
-
-  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0e1116; --surface: #161a21; --fg: #e9edf2; --muted: #98a2b0; --line: #2a303a;
-    --code: #4c9bef; --music: #a08cff; --code-soft: #13263b; --music-soft: #221d3d;
-    --bezel: #000000; --todo: #f0a85a; --todo-soft: #2b2015;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0e1116; --surface: #161a21; --fg: #e9edf2; --muted: #98a2b0; --line: #2a303a;
-  --code: #4c9bef; --music: #a08cff; --code-soft: #13263b; --music-soft: #221d3d;
-  --bezel: #000000; --todo: #f0a85a; --todo-soft: #2b2015;
-  color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font: 400 16px/1.6 var(--body);
-  -webkit-font-smoothing: antialiased;
-}
-a { color: var(--code); text-underline-offset: 3px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--code); outline-offset: 3px; border-radius: 4px; }
-
-.wrap {
-  max-width: 920px;
-  margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 56px 72px;
-  display: grid;
-  gap: 88px;
-}
-
-/* ---------- type ---------- */
-h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
-h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.01em; }
-h3 { font-size: 1.25rem; line-height: 1.2; font-weight: 700; }
-p { margin: 0; max-width: 62ch; }
-.label {
-  font: 500 0.72rem/1 var(--mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.meta { font: 400 0.8rem/1.4 var(--mono); color: var(--muted); }
-
-/* ---------- hero ---------- */
-.hero { display: grid; gap: 20px; }
-.hero .lede { font-size: clamp(1.15rem, 2.4vw, 1.4rem); line-height: 1.45; max-width: 34ch; }
-.hero .lede .c { color: var(--code); font-weight: 600; }
-.hero .lede .m { color: var(--music); font-weight: 600; }
-.hero .sub { color: var(--muted); }
-.links { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; font-size: 0.95rem; }
-.copy {
-  font: 500 0.85rem/1 var(--mono);
-  color: var(--fg);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 8px 14px;
-  cursor: pointer;
-}
-.copy:hover { border-color: var(--code); }
-
-/* ---------- session timeline ---------- */
-.session { display: grid; gap: 14px; }
-.session-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
-.tl {
-  min-width: 760px;
-  display: grid;
-  grid-template-columns: 92px 1fr;
-  row-gap: 10px;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-}
-.tl .lane-name { align-self: center; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-.tl .track { position: relative; height: 34px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
-.tl .track.tall { height: 70px; }
-.ruler { position: relative; height: 22px; border-bottom: 1px solid var(--line); }
-.ruler span { position: absolute; bottom: 4px; transform: translateX(-50%); color: var(--muted); white-space: nowrap; }
-.ruler span.start { transform: none; }
-.ruler span::after { content: ""; position: absolute; left: 50%; bottom: -5px; height: 5px; border-left: 1px solid var(--line); }
-.ruler span.start::after { left: 0; }
-.clip {
-  position: absolute;
-  top: 5px; height: 24px;
-  border-radius: 4px;
-  padding: 0 8px;
-  display: flex; align-items: center;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  font-weight: 500;
-}
-.clip.row2 { top: 41px; }
-.clip.code { background: var(--code-soft); color: var(--code); box-shadow: inset 2px 0 0 var(--code); }
-.clip.music { background: var(--music-soft); color: var(--music); box-shadow: inset 2px 0 0 var(--music); }
-.clip.music .wave { flex: 1; height: 14px; margin-left: 10px; opacity: 0.55; }
-.pin {
-  position: absolute; top: 5px; height: 24px;
-  display: flex; align-items: center; gap: 6px;
-  white-space: nowrap; color: var(--fg); font-weight: 500;
-}
-.pin::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--code); flex: none; }
-.pin.row2 { top: 41px; }
-.pin.end { transform: translateX(-100%); flex-direction: row-reverse; }
-.markers { position: relative; height: 22px; }
-.markers .pin { top: 0; height: 22px; color: var(--muted); }
-.markers .pin::before { background: var(--muted); }
-
-/* ---------- project blocks ---------- */
-.project { display: grid; gap: 28px; align-content: start; }
-.project-head { display: grid; gap: 10px; }
-.project-head .row { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
-.chips li { font: 500 0.75rem/1 var(--mono); padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
-
-.feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 40px; align-items: start; }
-.feature > * { min-width: 0; }
-.details { display: grid; gap: 18px; }
-.details dl { margin: 0; display: grid; gap: 14px; }
-.details dt { font-weight: 600; }
-.details dd { margin: 0; color: var(--muted); }
-
-.phones { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.phone { width: 200px; max-width: 100%; display: grid; gap: 10px; margin: 0; }
-.phone .screen {
-  aspect-ratio: 1284 / 2778;
-  max-width: 100%;
-  border: 7px solid var(--bezel);
-  border-radius: 30px;
-  overflow: hidden;
-  background: var(--surface);
-}
-.phone .screen img, .phone .screen video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.phone figcaption { font-size: 0.82rem; color: var(--muted); text-align: center; }
-
-.todo {
-  border-style: dashed !important;
-  border-color: var(--todo) !important;
-  background: var(--todo-soft) !important;
-  color: var(--todo);
-  display: grid; place-items: center; text-align: center;
-  padding: 16px;
-  font: 500 0.78rem/1.4 var(--mono);
-}
-
-.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; }
-.pair > * { min-width: 0; }
-.browser {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--surface);
-}
-.browser .bar { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
-.browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
-.browser .view { aspect-ratio: 16 / 10; max-width: 100%; border: 0; }
-
-/* ---------- music ---------- */
-.tracks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.tracks li {
-  display: grid; grid-template-columns: 2.2rem minmax(0, 1fr) auto; gap: 14px; align-items: center;
-  padding: 14px 0; border-bottom: 1px solid var(--line);
-}
-.tracks .n { font: 500 0.8rem/1 var(--mono); color: var(--music); }
-.tracks .t { font-weight: 600; overflow-wrap: anywhere; }
-.tracks .todo-line { color: var(--todo); font-family: var(--mono); font-size: 0.85rem; font-weight: 500; }
-
-/* ---------- work ---------- */
-.work { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
-.work li { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
-.work .when { font: 400 0.8rem/1.6 var(--mono); color: var(--muted); }
-.work .what { display: grid; gap: 4px; }
-.work .co { font-weight: 600; }
-.work .co span { font-weight: 400; color: var(--muted); }
-
-footer { display: grid; gap: 14px; border-top: 1px solid var(--line); padding-top: 28px; }
-
-@media (max-width: 760px) {
-  .wrap { gap: 64px; padding-block: 36px 56px; }
-  .feature, .pair { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .phone { width: 150px; }
-  .work li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-}
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
-</style>
-<style>html{scroll-behavior:smooth} :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="wrap">
+<main class="page">
 
-  <!-- HERO -->
-  <header class="hero">
-    <span class="label">iOS developer · Music producer · Winnipeg</span>
+  <header class="intro">
     <h1>Luc Benedictson</h1>
-    <p class="lede">I build <span class="c">iOS apps</span> and make <span class="m">music in Logic Pro</span>. I started both in the fall of 2022.</p>
-    <p class="sub">Final-semester Computer Science (Honours, Co-op) student at the University of Manitoba, graduating December 2026. Three co-op terms building full-stack features on SaaS products.</p>
-    <div class="links">
-      <button class="copy" id="copy-email" type="button" data-email="lucben2002@gmail.com">lucben2002@gmail.com</button>
+    <p>iOS developer and music producer in Winnipeg. Graduating in Computer Science, December 2026.</p>
+    <nav class="links" aria-label="Contact">
+      <button class="copy" type="button" data-email="lucben2002@gmail.com">lucben2002@gmail.com</button>
       <a href="https://github.com/lucbenedictson">GitHub</a>
       <a href="https://linkedin.com/in/luc-benedictson">LinkedIn</a>
-      <a href="https://apps.apple.com/ca/app/ontrack-success-wellness/id6654882325">OnTrack on the App Store</a>
-    </div>
+    </nav>
   </header>
 
-  <!-- ONTRACK -->
+  <!--
+    VISUALS: each project has a .stage. Replace a placeholder like this:
+      <div class="screen placeholder">...</div>
+    with an image:
+      <div class="screen"><img src="img/your-file.jpg" alt="What it shows"></div>
+    or a screen recording:
+      <div class="screen"><video src="img/your-file.mp4" autoplay muted loop playsinline></video></div>
+  -->
+
   <section class="project" id="ontrack">
-    <div class="project-head">
-      <span class="label">Featured · iOS · Aug 2024</span>
-      <h2>OnTrack – Success &amp; Wellness</h2>
-      <div class="row">
+    <div class="stage">
+      <div class="devices">
+        <figure class="phone">
+          <div class="screen placeholder">Calendar recording</div>
+          <figcaption>Week calendar, with dots that follow your filters</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="screen placeholder">Screenshot</div>
+          <figcaption>Tasks by category</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="screen placeholder">Screenshot</div>
+          <figcaption>Editing a goal</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="caption">
+      <div>
+        <h2>OnTrack</h2>
+        <p>A goal tracker for career, health, and fitness. Designed, built, and shipped on my own.</p>
+      </div>
+      <div class="meta">
+        <span>SwiftUI · 2024</span>
         <a href="https://apps.apple.com/ca/app/ontrack-success-wellness/id6654882325">App Store</a>
         <a href="https://github.com/lucbenedictson/OnTrack">GitHub</a>
       </div>
     </div>
-
-    <div class="feature">
-      <div class="details">
-        <p>A goal tracker for career, health, and fitness. It grew out of my Swift Student Challenge app, and I designed, built, and published it to the App Store on my own.</p>
-        <dl>
-          <div>
-            <dt>The week calendar</dt>
-            <dd>Swipe between weeks to pick a day. Dots mark days that have tasks, and they respect whatever category and completion filters you have on. The selected day stays highlighted. I started from a Stack Overflow example and built these details on top.</dd>
-          </div>
-          <div>
-            <dt>Remembers how you left it</dt>
-            <dd>Tasks, filters, sort order, and the selected date are saved with Codable and UserDefaults, so the app reopens exactly where you were.</dd>
-          </div>
-          <div>
-            <dt>Built with</dt>
-            <dd>SwiftUI and MVVM, with shared view models for tasks and preferences.</dd>
-          </div>
-        </dl>
-        <ul class="chips"><li>Swift</li><li>SwiftUI</li><li>MVVM</li><li>App Store Connect</li></ul>
-      </div>
-
-      <div class="phones">
-        <figure class="phone">
-          <div class="screen todo">Screen recording:<br>swiping the week calendar</div>
-          <figcaption>Week calendar</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="screen todo">Screenshot:<br>task list with filters</div>
-          <figcaption>Tasks and filters</figcaption>
-        </figure>
-      </div>
-    </div>
   </section>
 
-  <!-- SSC + NHL -->
-  <div class="pair">
-    <section class="project" id="ssc">
-      <div class="project-head">
-        <span class="label">iOS · Feb 2024</span>
-        <h3>Swift Student Challenge 2024</h3>
-        <p>A to-do app built in under a week for Apple's challenge: add, edit, and delete tasks that save between launches, with a custom swipe-to-delete. It later became OnTrack.</p>
-        <div class="row"><a href="https://github.com/lucbenedictson/Swift-Student-Challenge-2024">GitHub</a></div>
-      </div>
-      <div class="phones">
+  <section class="project" id="ssc">
+    <div class="stage">
+      <div class="devices">
         <figure class="phone">
-          <div class="screen"><img src="img/ssc-1.jpg" alt="Swift Student Challenge app showing a completed task, Walk dog, under the Complete filter" width="640" height="1385" loading="lazy"></div>
+          <div class="screen"><img src="img/ssc-1.jpg" alt="To-do app showing a completed task, Walk dog" width="640" height="1385" loading="lazy"></div>
           <figcaption>Completed tasks</figcaption>
         </figure>
         <figure class="phone">
-          <div class="screen"><img src="img/ssc-2.jpg" alt="Swift Student Challenge app with a task swiped left to reveal a red delete button" width="640" height="1385" loading="lazy"></div>
+          <div class="screen"><img src="img/ssc-2.jpg" alt="A task swiped left to reveal a red delete button" width="640" height="1385" loading="lazy"></div>
           <figcaption>Custom swipe to delete</figcaption>
         </figure>
       </div>
-    </section>
-
-    <section class="project" id="nhl">
-      <div class="project-head">
-        <span class="label">Web · Jan – Apr 2025</span>
-        <h3>NHL Database</h3>
-        <p>A full-stack web app built with classmates. I made the query card layout and helped with the table displays. Supabase RPCs and indexes keep queries fast across several thousand records.</p>
-        <div class="row">
-          <a href="https://nhldatabase.vercel.app/">Live site</a>
-          <a href="https://github.com/dreaesposito/comp-3380-frontend">GitHub</a>
-        </div>
-        <ul class="chips"><li>React</li><li>TypeScript</li><li>Tailwind</li><li>Supabase</li></ul>
+    </div>
+    <div class="caption">
+      <div>
+        <h2>Swift Student Challenge</h2>
+        <p>A to-do app built in under a week for Apple's challenge. It became OnTrack.</p>
       </div>
+      <div class="meta">
+        <span>SwiftUI · 2024</span>
+        <a href="https://github.com/lucbenedictson/Swift-Student-Challenge-2024">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="nhl">
+    <div class="stage">
       <div class="browser">
         <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="view todo">Screenshot:<br>query cards on the live site</div>
+        <div class="view placeholder">Screenshot</div>
       </div>
-    </section>
-  </div>
-
-  <!-- MUSIC -->
-  <section class="project" id="music">
-    <div class="project-head">
-      <span class="label">Music · Logic Pro · 2022 – now</span>
-      <h2>Things I've made</h2>
-      <p>Fred again..'s <em>Actual Life (April 14 – December 17 2020)</em> is what got me to open Logic Pro. These days my sketches and works in progress live in [untitled].</p>
     </div>
-    <ol class="tracks">
-      <li><span class="n">01</span><span class="t todo-line">Track title</span><span class="todo-line">Link</span></li>
-      <li><span class="n">02</span><span class="t todo-line">Track title</span><span class="todo-line">Link</span></li>
+    <div class="caption">
+      <div>
+        <h2>NHL Database</h2>
+        <p>A stats site built with classmates. I made the query cards.</p>
+      </div>
+      <div class="meta">
+        <span>React · Supabase · 2025</span>
+        <a href="https://nhldatabase.vercel.app/">Live site</a>
+        <a href="https://github.com/dreaesposito/comp-3380-frontend">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="list" id="music">
+    <h2>Music</h2>
+    <p class="note">Made in Logic Pro since 2022.</p>
+    <ol class="rows">
+      <li><span class="placeholder-text">Track title</span><a href="#music" class="placeholder-text">Listen</a></li>
+      <li><span class="placeholder-text">Track title</span><a href="#music" class="placeholder-text">Listen</a></li>
     </ol>
   </section>
 
-  <!-- WORK -->
-  <section class="project" id="work">
-    <div class="project-head">
-      <span class="label">Co-op experience</span>
-      <h2>Work</h2>
-    </div>
-    <ul class="work">
-      <li>
-        <span class="when">May – Aug 2026</span>
-        <div class="what"><span class="co">Conquest <span>· Software Developer Co-op</span></span>
-          <span>Built most of the Angular front end for a region-switching epic, fixed localization issues across user-facing repositories, and wrote BDD tests.</span></div>
-      </li>
-      <li>
-        <span class="when">Sep – Dec 2025</span>
-        <div class="what"><span class="co">Niche Technology <span>· Software Developer Co-op</span></span>
-          <span>Developed an ASP.NET web API for address verification, including its data schema and an interpolation algorithm to fill gaps in incomplete datasets.</span></div>
-      </li>
-      <li>
-        <span class="when">Jan – Apr 2025</span>
-        <div class="what"><span class="co">Varian <span>· Software Developer Co-op</span></span>
-          <span>Developed RESTful APIs in Java with Micronaut and wrote UI, unit, and integration tests.</span></div>
-      </li>
+  <section class="list" id="work">
+    <h2>Work</h2>
+    <ul class="rows">
+      <li><span>Conquest</span><span class="dim">Software Developer Co-op · 2026</span></li>
+      <li><span>Niche Technology</span><span class="dim">Software Developer Co-op · 2025</span></li>
+      <li><span>Varian</span><span class="dim">Software Developer Co-op · 2025</span></li>
     </ul>
   </section>
 
-  <footer>
-    <span class="label">Get in touch</span>
-    <div class="links">
-      <button class="copy" id="copy-email-2" type="button" data-email="lucben2002@gmail.com">lucben2002@gmail.com</button>
-      <a href="https://github.com/lucbenedictson">GitHub</a>
-      <a href="https://linkedin.com/in/luc-benedictson">LinkedIn</a>
-    </div>
+  <footer class="links">
+    <button class="copy" type="button" data-email="lucben2002@gmail.com">lucben2002@gmail.com</button>
+    <a href="https://github.com/lucbenedictson">GitHub</a>
+    <a href="https://linkedin.com/in/luc-benedictson">LinkedIn</a>
   </footer>
 
-</div>
-
-<script>
-document.querySelectorAll('.copy').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var email = btn.dataset.email;
-    var done = function () {
-      btn.textContent = 'Copied';
-      setTimeout(function () { btn.textContent = email; }, 1600);
-    };
-    try {
-      navigator.clipboard.writeText(email).then(done, function () { selectText(btn); });
-    } catch (e) { selectText(btn); }
-  });
-});
-function selectText(el) {
-  var r = document.createRange(); r.selectNodeContents(el);
-  var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-}
-</script>
+</main>
+<script src="script.js"></script>
 </body>
 </html>
