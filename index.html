@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Luc Benedictson</title>
-<meta name="description" content="Luc Benedictson is a software developer and music producer in Winnipeg, Canada. Selected work: OnTrack for iOS and NHL Database.">
+<meta name="description" content="Luc Benedictson is a software developer and music producer in Winnipeg, Canada. Selected work: OnTrack, a Swift Student Challenge app, and NHL Database.">
 <meta name="theme-color" content="#FAF9F6">
 <meta property="og:title" content="Luc Benedictson">
 <meta property="og:description" content="Software developer and music producer based in Winnipeg, Canada.">
@@ -40,7 +40,7 @@
 <main>
 
   <!-- HERO -->
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="hero" id="about" aria-labelledby="hero-title">
     <div class="frame">
       <p class="hero-meta" data-reveal>
         <span>Winnipeg, Canada</span>
@@ -48,7 +48,7 @@
       </p>
       <!-- ABOUT STATEMENT: replace the placeholder text below with your own statement.
            Wrap a word in <em>…</em> to set it in italics. Then delete the class="placeholder-statement". -->
-      <h1 id="hero-title" class="placeholder-statement" data-reveal>Your statement goes here.</h1>
+      <h1 id="hero-title" class="placeholder-statement" data-reveal>Your statement goes here. It can run a few sentences: who you are, what you build, and how music fits in. Keep it short enough to read in one breath.</h1>
       <p class="hero-sub" data-reveal>Software developer and music producer based in Winnipeg, Canada.</p>
     </div>
   </section>
@@ -58,7 +58,7 @@
     <div class="frame">
       <div class="section-head">
         <h2 id="work-title" class="label">Selected work</h2>
-        <span class="label count">02</span>
+        <span class="label count">03</span>
       </div>
 
       <!-- Project 01 -->
@@ -110,7 +110,35 @@
         <div class="project-info" data-reveal>
           <div class="project-title">
             <span class="num">02</span>
-            <h3 id="p2">NHL Database</h3>
+            <h3 id="p2">Swift Student Challenge</h3>
+          </div>
+          <div class="project-body">
+            <p class="tags">iOS app <i>/</i> SwiftUI <i>/</i> 2024</p>
+            <p class="desc">My first iOS app: a to-do list built in under a week for Apple's 2024 Swift Student Challenge, with saved tasks and a custom swipe-to-delete. It later grew into OnTrack.</p>
+            <p class="links">
+              <a href="https://github.com/lucbenedictson/Swift-Student-Challenge-2024">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
+            </p>
+          </div>
+        </div>
+
+        <div class="stage stage--phones stage--pair" data-reveal>
+          <figure class="phone phone--side">
+            <div class="screen"><img src="img/ssc-1.jpg" alt="To-do app showing a completed task, Walk dog, under the Complete filter" width="640" height="1385" loading="lazy"></div>
+            <figcaption>Completed tasks</figcaption>
+          </figure>
+          <figure class="phone phone--side">
+            <div class="screen"><img src="img/ssc-2.jpg" alt="A task swiped left to reveal a red delete button" width="640" height="1385" loading="lazy"></div>
+            <figcaption>Custom swipe to delete</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- Project 03 -->
+      <article class="project project--second" aria-labelledby="p3">
+        <div class="project-info" data-reveal>
+          <div class="project-title">
+            <span class="num">03</span>
+            <h3 id="p3">NHL Database</h3>
           </div>
           <div class="project-body">
             <p class="tags">Web app <i>/</i> React, TypeScript, Tailwind, Supabase <i>/</i> 2025</p>
@@ -130,49 +158,6 @@
           </figure>
         </div>
       </article>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about" aria-labelledby="about-title">
-    <div class="frame grid">
-      <div class="about-head">
-        <h2 id="about-title" class="label">About</h2>
-      </div>
-      <div class="about-body">
-        <p class="about-lede" data-reveal>I'm finishing a Computer Science Honours Co-op degree at the University of Manitoba. I've been making music in FL Studio and Logic Pro since 2022, which is a big part of why I care about creative software and the tools people use to make things.</p>
-
-        <ol class="timeline">
-          <li data-reveal>
-            <div class="when">May – Aug 2026</div>
-            <div class="what">
-              <h3>Conquest <span>Software Developer Co-op</span></h3>
-              <p>Built most of the Angular front end for a region-switching feature, fixed localization issues across user-facing repositories, and wrote BDD tests.</p>
-            </div>
-          </li>
-          <li data-reveal>
-            <div class="when">Sep – Dec 2025</div>
-            <div class="what">
-              <h3>Niche Technology <span>Software Developer Co-op</span></h3>
-              <p>Developed an ASP.NET web API for address verification, including the database schema and an interpolation algorithm for incomplete datasets.</p>
-            </div>
-          </li>
-          <li data-reveal>
-            <div class="when">Jan – Apr 2025</div>
-            <div class="what">
-              <h3>Varian <span>Software Developer Co-op</span></h3>
-              <p>Developed REST APIs with Java and Micronaut, alongside UI, unit, and integration tests.</p>
-            </div>
-          </li>
-          <li data-reveal>
-            <div class="when">Sep 2022 – Dec 2026</div>
-            <div class="what">
-              <h3>University of Manitoba <span>B.C.Sc. Honours, Co-op</span></h3>
-              <p>Computer Science, with a minor in Mathematics and Management.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
     </div>
   </section>
 
