@@ -1,7 +1,7 @@
 /* Minimal one-scroll portfolio. Visuals sit on large "stages"; text stays short and quiet. */
 
 :root {
-  --bg: #fafafa;
+  --bg: #ffffff;
   --stage: #eeeff1;
   --fg: #111214;
   --dim: #6b6f76;
