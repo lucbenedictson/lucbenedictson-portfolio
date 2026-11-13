@@ -193,7 +193,6 @@ a:hover .arrow { transform: translate(2px, -2px); }
   padding-bottom: 16px;
   border-bottom: 1px solid var(--rule);
 }
-.count { font-variant-numeric: tabular-nums; }
 
 /* Each project: text on the left (4 columns), screens on the right (7 columns).
    Phones are sized by height so every project matches and fits in one window. */
