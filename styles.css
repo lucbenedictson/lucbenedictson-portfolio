@@ -224,8 +224,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
   letter-spacing: -0.015em;
   line-height: 1;
 }
-.project--lead h3 { font-size: clamp(3rem, 7vw, 5.5rem); }
-.project--second h3 { font-size: clamp(2.25rem, 4.5vw, 3.5rem); }
+.project h3 { font-size: clamp(2.5rem, 5.5vw, 4.25rem); }
 
 .project-body {
   grid-column: 8 / span 5;
