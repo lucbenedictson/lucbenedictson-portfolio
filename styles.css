@@ -282,7 +282,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
   color: var(--muted);
   transform: translateX(-18px);
 }
-.browser .view { aspect-ratio: 16 / 10; }
+.browser .view { aspect-ratio: 1600 / 886; }
 
 /* imagery scales very slightly when a project is hovered */
 .screen img, .screen video, .view img, .view video {
