@@ -170,12 +170,12 @@ a:hover .arrow { transform: translate(2px, -2px); }
 /* the dot breathes to show the time is live */
 @keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 .hero h1 {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-weight: 400;
-  font-size: clamp(1.75rem, 3.2vw, 2.6rem);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  max-width: 30ch;
+  font-size: clamp(18px, 1.5vw, 21px);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  max-width: 46ch;
   text-wrap: pretty;
 }
 .hero h1 em { font-style: italic; }
