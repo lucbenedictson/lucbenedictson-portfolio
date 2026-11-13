@@ -72,32 +72,13 @@
   });
 })();
 
-// 5. Videos: fade in once playing (the poster shows underneath until then),
-//    and load below-the-fold videos (data-src) only when they get close.
+// 5. Videos fade in once playing (the poster shows underneath until then).
 (function () {
-  var videos = document.querySelectorAll('.has-poster video');
-  videos.forEach(function (v) {
+  document.querySelectorAll('.has-poster video').forEach(function (v) {
     var show = function () { v.classList.add('playing'); };
     if (!v.paused && v.readyState > 2) show();
     v.addEventListener('playing', show);
   });
-
-  var lazy = document.querySelectorAll('video[data-src]');
-  var load = function (v) {
-    v.src = v.dataset.src;
-    v.removeAttribute('data-src');
-    var p = v.play();
-    if (p && p.catch) p.catch(function () {});
-  };
-  if (!('IntersectionObserver' in window)) { lazy.forEach(load); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      load(e.target);
-      io.unobserve(e.target);
-    });
-  }, { rootMargin: '400px 0px' });
-  lazy.forEach(function (v) { io.observe(v); });
 })();
 
 // 4. Copy email.
