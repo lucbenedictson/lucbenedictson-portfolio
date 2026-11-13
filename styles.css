@@ -289,6 +289,11 @@ a:hover .arrow { transform: translate(2px, -2px); }
 .project:hover .screen img, .project:hover .screen video,
 .project:hover .view img, .project:hover .view video { transform: scale(1.015); }
 
+/* poster shows instantly as a background; the video fades in once it is actually playing */
+.phone .screen.has-poster, .browser .view.has-poster { background-size: cover; background-position: center; }
+.js .has-poster video { opacity: 0; transition: opacity 0.4s var(--ease), transform 0.8s var(--ease); }
+.js .has-poster video.playing { opacity: 1; }
+
 /* placeholders until real screenshots are added */
 .placeholder {
   display: grid;
