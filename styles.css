@@ -233,11 +233,18 @@ a:hover .arrow { transform: translate(2px, -2px); }
 .media { grid-column: 6 / -1; }
 .media--phones { display: flex; justify-content: flex-end; gap: clamp(24px, 3vw, 44px); }
 
-.phone { display: grid; gap: 16px; justify-items: center; margin: 0; }
+.phone {
+  display: grid; gap: 16px; justify-items: center; margin: 0;
+  /* the figure gets a definite width (from the phone height), so Safari can't
+     shrink the screen to the caption's width; it can still shrink if space is tight */
+  width: calc(var(--phone-h) * 1179 / 2556);
+  flex: 0 1 auto;
+  min-width: 0;
+}
 .phone .screen {
-  height: var(--phone-h);
+  width: 100%;
+  height: auto;
   aspect-ratio: 1179 / 2556;
-  max-width: 100%;
   border-radius: 30px;
   overflow: hidden;
   background: #fff;
@@ -376,7 +383,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
 
   /* both phones side by side, sized to the screen width */
   .media--phones { gap: 14px; }
-  .phone { flex: 1 1 0; min-width: 0; }
+  .phone { flex: 1 1 0; min-width: 0; width: auto; }
   .phone .screen { height: auto; width: 100%; border-radius: 22px; }
   .phone figcaption { font-size: 10px; }
 
