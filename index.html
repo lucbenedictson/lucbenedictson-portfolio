@@ -62,7 +62,7 @@
       </div>
 
       <!-- Project 01 -->
-      <article class="project project--lead" aria-labelledby="p1">
+      <article class="project" aria-labelledby="p1">
         <div class="project-info" data-reveal>
           <div class="project-title">
             <span class="num">01</span>
@@ -83,18 +83,13 @@
           </div>
         </div>
 
-        <!--
-          Replace each placeholder <div class="screen placeholder">…</div> with:
-            <div class="screen"><img src="img/ontrack-1.jpg" alt="Describe the screen" width="1179" height="2556"></div>
-          or a screen recording:
-            <div class="screen"><video src="img/ontrack-calendar.mp4" autoplay muted loop playsinline></video></div>
-        -->
-        <div class="stage stage--phones stage--duo" data-reveal>
-          <figure class="phone phone--duo">
+        <!-- Each phone: <div class="screen"><img …> or <video … autoplay muted loop playsinline></div> -->
+        <div class="media media--phones" data-reveal>
+          <figure class="phone">
             <div class="screen"><video src="img/ontrack-calendar.mp4" poster="img/ontrack-calendar-poster.jpg" width="444" height="960" autoplay muted loop playsinline preload="metadata" aria-label="Opening the week calendar, swiping to the next week, picking a day, and completing a task"></video></div>
             <figcaption>The week calendar</figcaption>
           </figure>
-          <figure class="phone phone--duo">
+          <figure class="phone">
             <div class="screen"><video src="img/ontrack-tasks.mp4" poster="img/ontrack-tasks-poster.jpg" width="590" height="1278" autoplay muted loop playsinline preload="metadata" aria-label="Adding a task called Walk dog, sorting tasks by priority, then checking it off"></video></div>
             <figcaption>Adding and sorting tasks</figcaption>
           </figure>
@@ -102,7 +97,7 @@
       </article>
 
       <!-- Project 02 -->
-      <article class="project project--second" aria-labelledby="p2">
+      <article class="project" aria-labelledby="p2">
         <div class="project-info" data-reveal>
           <div class="project-title">
             <span class="num">02</span>
@@ -117,12 +112,12 @@
           </div>
         </div>
 
-        <div class="stage stage--phones stage--duo" data-reveal>
-          <figure class="phone phone--duo">
+        <div class="media media--phones" data-reveal>
+          <figure class="phone">
             <div class="screen"><img src="img/ssc-1.jpg" alt="To-do app showing a completed task, Walk dog, under the Complete filter" width="640" height="1385" loading="lazy"></div>
             <figcaption>Completed tasks</figcaption>
           </figure>
-          <figure class="phone phone--duo">
+          <figure class="phone">
             <div class="screen"><img src="img/ssc-2.jpg" alt="A task swiped left to reveal a red delete button" width="640" height="1385" loading="lazy"></div>
             <figcaption>Custom swipe to delete</figcaption>
           </figure>
@@ -130,7 +125,7 @@
       </article>
 
       <!-- Project 03 -->
-      <article class="project project--second" aria-labelledby="p3">
+      <article class="project" aria-labelledby="p3">
         <div class="project-info" data-reveal>
           <div class="project-title">
             <span class="num">03</span>
@@ -147,7 +142,7 @@
         </div>
 
         <!-- Replace the placeholder with: <div class="view"><img src="img/nhl-1.jpg" alt="…" width="1600" height="1000"></div> -->
-        <div class="stage stage--browser" data-reveal>
+        <div class="media media--browser" data-reveal>
           <figure class="browser">
             <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>nhldatabase.vercel.app</span></div>
             <div class="view placeholder"><span>Screenshot</span></div>

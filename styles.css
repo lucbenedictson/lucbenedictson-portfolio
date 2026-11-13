@@ -1,7 +1,7 @@
 /*
   Luc Benedictson — portfolio
   Editorial single page: serif headlines, small sans/mono metadata,
-  one 12-column frame, product imagery on quiet "stages".
+  one 12-column frame; each project puts text beside its screens.
 */
 
 :root {
@@ -195,44 +195,35 @@ a:hover .arrow { transform: translate(2px, -2px); }
 }
 .count { font-variant-numeric: tabular-nums; }
 
-.project { padding-top: 48px; }
-.project--second { padding-top: clamp(112px, 14vw, 176px); }
-.stage--pair { gap: clamp(20px, 3vw, 40px); }
-
-.project-info {
+/* Each project: text on the left (4 columns), screens on the right (7 columns).
+   Phones are sized by height so every project matches and fits in one window. */
+.project {
+  --phone-h: min(58vh, 520px);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: 24px;
-  row-gap: 20px;
-  margin-bottom: 40px;
+  align-items: center;
+  padding-block: clamp(72px, 9vw, 120px);
 }
-.project-title {
-  grid-column: 1 / span 6;
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-}
+.project + .project { border-top: 1px solid var(--rule); }
+
+.project-info { grid-column: 1 / span 4; display: grid; gap: 22px; }
+.project-title { display: flex; align-items: flex-start; gap: 16px; }
 .num {
   font: 400 11px/1 var(--mono);
   color: var(--blue);
   letter-spacing: 0.04em;
-  padding-top: 0.9em;
+  padding-top: 0.75em;
 }
 .project h3 {
   font-family: var(--serif);
   font-weight: 400;
+  font-size: clamp(2.5rem, 4.2vw, 3.6rem);
   letter-spacing: -0.015em;
   line-height: 1;
+  text-wrap: balance;
 }
-.project h3 { font-size: clamp(2.5rem, 5.5vw, 4.25rem); }
-
-.project-body {
-  grid-column: 8 / span 5;
-  display: grid;
-  gap: 16px;
-  align-content: start;
-  padding-top: 6px;
-}
+.project-body { display: grid; gap: 16px; }
 .tags {
   font: 400 11px/1.6 var(--mono);
   letter-spacing: 0.06em;
@@ -240,39 +231,25 @@ a:hover .arrow { transform: translate(2px, -2px); }
   color: var(--muted);
 }
 .tags i { font-style: normal; color: var(--rule); margin-inline: 4px; }
-.desc { font-size: 15px; line-height: 1.6; }
+.desc { font-size: 15px; line-height: 1.6; max-width: 40ch; }
 .notes { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
 .notes li { display: flex; gap: 10px; }
 .notes li::before { content: "–"; color: var(--rule); }
 .links { display: flex; gap: 24px; font-size: 14px; padding-top: 4px; }
 
-/* ---------- stages (product imagery) ---------- */
-.stage {
-  background: var(--stage);
-  border-radius: 2px;
-  overflow: hidden;
-}
+/* ---------- media (product imagery, no background) ---------- */
+.media { grid-column: 6 / -1; }
+.media--phones { display: flex; justify-content: flex-end; gap: clamp(24px, 3vw, 44px); }
 
-.stage--phones {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: clamp(20px, 4vw, 64px);
-  padding: clamp(48px, 8vw, 112px) clamp(20px, 5vw, 80px) clamp(40px, 6vw, 80px);
-}
-.phone { display: grid; gap: 18px; justify-items: center; }
-.phone--main { width: clamp(220px, 26vw, 320px); }
-.phone--side { width: clamp(170px, 20vw, 248px); }
-/* OnTrack: two equal phones */
-.phone--duo { width: clamp(220px, 25vw, 300px); }
-.stage--duo { gap: clamp(28px, 6vw, 96px); }
+.phone { display: grid; gap: 16px; justify-items: center; margin: 0; }
 .phone .screen {
-  width: 100%;
+  height: var(--phone-h);
   aspect-ratio: 1179 / 2556;
-  border: 4px solid var(--bezel);
-  border-radius: clamp(24px, 3vw, 38px);
+  max-width: 100%;
+  border-radius: 30px;
   overflow: hidden;
-  background: var(--paper);
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--rule), 0 30px 60px -30px rgba(25, 25, 25, 0.25);
 }
 .phone figcaption {
   font: 400 11px/1.4 var(--mono);
@@ -281,16 +258,11 @@ a:hover .arrow { transform: translate(2px, -2px); }
   text-align: center;
 }
 
-.stage--browser {
-  padding: clamp(32px, 6vw, 80px) clamp(20px, 6vw, 96px);
-}
 .browser {
-  max-width: 880px;
-  margin: 0 auto;
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
+  background: #fff;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 0 0 1px var(--rule), 0 30px 60px -30px rgba(25, 25, 25, 0.25);
 }
 .browser .bar {
   display: flex;
@@ -397,10 +369,11 @@ a:hover .arrow { transform: translate(2px, -2px); }
 }
 .js [data-reveal].in { opacity: 1; transform: none; }
 
-/* ---------- tablet ---------- */
+/* ---------- tablet: text above, screens below ---------- */
 @media (max-width: 900px) {
-  .project-title { grid-column: 1 / -1; }
-  .project-body { grid-column: 1 / -1; max-width: 560px; padding-top: 0; }
+  .project { row-gap: 40px; }
+  .project-info, .media { grid-column: 1 / -1; }
+  .media--phones { justify-content: center; }
 }
 
 /* ---------- phone ---------- */
@@ -409,31 +382,15 @@ a:hover .arrow { transform: translate(2px, -2px); }
   .nav ul { gap: 20px; }
   .hero { padding-block: 88px 104px; }
   .hero-meta { margin-bottom: 28px; }
-  .project-info { margin-bottom: 28px; }
+  .project { padding-block: 64px; row-gap: 32px; }
 
-  /* phones become a swipeable row, main screen first */
-  .stage--phones {
-    justify-content: flex-start;
-    align-items: flex-start;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px;
-    padding: 36px 20px 32px;
-    scrollbar-width: none;
-    margin-inline: calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));
-    border-radius: 0;
-  }
-  .stage--phones::-webkit-scrollbar { display: none; }
-  .phone { flex: none; width: 68vw !important; max-width: 280px; scroll-snap-align: center; }
-  .phone--main { order: -1; }
+  /* both phones side by side, sized to the screen width */
+  .media--phones { gap: 14px; }
+  .phone { flex: 1 1 0; min-width: 0; }
+  .phone .screen { height: auto; width: 100%; border-radius: 22px; }
+  .phone figcaption { font-size: 10px; }
 
-  .stage--browser {
-    padding: 24px 16px;
-    margin-inline: calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));
-    border-radius: 0;
-  }
   .browser .bar span { display: none; }
-
   .colophon { flex-direction: column; }
 }
 
