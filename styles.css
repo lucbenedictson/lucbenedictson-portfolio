@@ -397,11 +397,6 @@ a:hover .arrow { transform: translate(2px, -2px); }
 }
 .js [data-reveal].in { opacity: 1; transform: none; }
 
-/* NHL is the secondary project: a narrower stage set to the right of the grid */
-@media (min-width: 901px) {
-  .project--second .stage { margin-left: calc((100% + 24px) / 12 * 3); }
-}
-
 /* ---------- tablet ---------- */
 @media (max-width: 900px) {
   .project-title { grid-column: 1 / -1; }
