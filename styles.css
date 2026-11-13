@@ -165,7 +165,10 @@ a:hover .arrow { transform: translate(2px, -2px); }
   border-radius: 50%;
   background: var(--blue);
   vertical-align: 1px;
+  animation: breathe 2.4s ease-in-out infinite;
 }
+/* the dot breathes to show the time is live */
+@keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 .hero h1 {
   font-family: var(--serif);
   font-weight: 400;
@@ -397,5 +400,6 @@ a:hover .arrow { transform: translate(2px, -2px); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
+  .local-time::before { animation: none; }
   .js [data-reveal] { opacity: 1; transform: none; }
 }
