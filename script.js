@@ -21,19 +21,33 @@
 
   var links = Array.prototype.slice.call(document.querySelectorAll('.nav ul a'));
   var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
-  if (!('IntersectionObserver' in window)) return;
 
-  var visible = new Map();
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { visible.set(e.target, e.isIntersecting); });
-    var current = null;
-    sections.forEach(function (s) { if (visible.get(s)) current = current || s; });
+  function setCurrent(index) {
     links.forEach(function (a, i) {
-      if (sections[i] === current) a.setAttribute('aria-current', 'true');
+      if (i === index) a.setAttribute('aria-current', 'true');
       else a.removeAttribute('aria-current');
     });
-  }, { rootMargin: '-45% 0px -45% 0px' });
-  sections.forEach(function (s) { if (s) observer.observe(s); });
+  }
+
+  // The current section is the last one whose top has passed the upper part of the screen.
+  // At the very bottom of the page, the last section (Contact) is always current.
+  function update() {
+    var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (atBottom) return setCurrent(sections.length - 1);
+    var line = window.innerHeight * 0.4;
+    var index = 0;
+    sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= line) index = i; });
+    setCurrent(index);
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { ticking = false; update(); });
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
 })();
 
 // 3. Restrained entrance: elements fade up once as they enter the viewport.
