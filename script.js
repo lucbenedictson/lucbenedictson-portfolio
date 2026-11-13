@@ -1,18 +1,6 @@
 // Small details only. Everything on the page works without this file.
 
-// 1. Local time in Winnipeg, shown in the hero.
-(function () {
-  var clock = document.getElementById('clock');
-  if (!clock) return;
-  var format = new Intl.DateTimeFormat('en-CA', {
-    hour: 'numeric', minute: '2-digit', timeZone: 'America/Winnipeg'
-  });
-  function tick() { clock.textContent = format.format(new Date()); }
-  tick();
-  setInterval(tick, 30000);
-})();
-
-// 2. Nav gets a hairline once you scroll; the current section gets a blue dot.
+// 1. Nav gets a hairline once you scroll; the current section gets a blue dot.
 (function () {
   var nav = document.querySelector('.nav');
   var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 8); };
@@ -36,7 +24,7 @@
   sections.forEach(function (s) { if (s) observer.observe(s); });
 })();
 
-// 3. Restrained entrance: elements fade up once as they enter the viewport.
+// 2. Restrained entrance: elements fade up once as they enter the viewport.
 (function () {
   var items = document.querySelectorAll('[data-reveal]');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -58,7 +46,7 @@
   });
 })();
 
-// 4. Copy email.
+// 3. Copy email.
 document.querySelectorAll('.copy').forEach(function (button) {
   var email = button.dataset.email;
   var hint = button.querySelector('.copy-hint');
