@@ -147,6 +147,25 @@ a:hover .arrow { transform: translate(2px, -2px); }
 
 /* ---------- hero ---------- */
 .hero { padding-block: clamp(96px, 14vw, 176px) clamp(88px, 12vw, 152px); }
+.hero-meta {
+  display: flex;
+  gap: 20px;
+  font: 400 11px/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+.local-time { font-variant-numeric: tabular-nums; }
+.local-time::before {
+  content: "";
+  display: inline-block;
+  width: 5px; height: 5px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  vertical-align: 1px;
+}
 .hero h1 {
   font-family: var(--serif);
   font-weight: 400;
@@ -362,6 +381,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
   body { font-size: 15px; }
   .nav ul { gap: 20px; }
   .hero { padding-block: 88px 104px; }
+  .hero-meta { margin-bottom: 28px; }
   .project { padding-block: 64px; row-gap: 32px; }
 
   /* both phones side by side, sized to the screen width */
