@@ -179,14 +179,6 @@ a:hover .arrow { transform: translate(2px, -2px); }
   text-wrap: pretty;
 }
 .hero h1 em { font-style: italic; }
-/* shown until the real statement is written */
-.hero h1.placeholder-statement { color: var(--muted); opacity: 0.45; }
-.hero-sub {
-  margin-top: 32px;
-  max-width: 30ch;
-  font-size: 16px;
-  color: var(--muted);
-}
 
 /* ---------- work ---------- */
 .section-head {
@@ -312,7 +304,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
 
 /* ---------- contact ---------- */
 .contact {
-  padding-top: clamp(140px, 18vw, 240px);
+  padding-top: clamp(64px, 8vw, 112px);
   padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
 }
 .contact-label {
