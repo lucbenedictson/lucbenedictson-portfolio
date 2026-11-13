@@ -227,9 +227,6 @@ a:hover .arrow { transform: translate(2px, -2px); }
 .tags i { font-style: normal; color: var(--rule); margin-inline: 4px; }
 .tags span { white-space: nowrap; }
 .desc { font-size: 15px; line-height: 1.6; max-width: 40ch; }
-.notes { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
-.notes li { display: flex; gap: 10px; }
-.notes li::before { content: "–"; color: var(--rule); }
 .links { display: flex; gap: 24px; font-size: 14px; padding-top: 4px; }
 
 /* ---------- media (product imagery, no background) ---------- */
